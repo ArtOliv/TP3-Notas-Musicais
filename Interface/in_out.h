@@ -1,3 +1,6 @@
+#ifndef IN_OUT_H
+#define IN_OUT_H
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,3 +12,5 @@ char** criaListaCaracter(FILE *entrada, int tamanho);
 void destroiLista(char **lista, int tamanho);
 
 void escreveResultado(FILE *saida, int posicao);
+
+#endif
