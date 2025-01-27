@@ -1,19 +1,19 @@
 Foram implementados os seguintes algoritmos:
 
-1 - Força Bruta
-2 - KMP
-3 - Boyer-Moore (BMH)
-4 - ShiftAndExato
+1 - Força Bruta  
+2 - KMP  
+3 - Boyer-Moore (BMH)  
+4 - ShiftAndExato  
 
 Para executar o programa, primeiro altere o arquivo de entrada presente em ./Entrada_saida/Arquivos/entrada.txt com a entrada que desejar seguindo o padrão abaixo:
 
-16 4
-D G A B C D G G G C D E F# G C C
-G G C D
-4 3
-C E G Bb
-D F# A
-0 0
+16 4  
+D G A B C D G G G C D E F# G C C  
+G G C D  
+4 3  
+C E G Bb  
+D F# A  
+0 0  
 
 Para compilar digite "make" no terminal e para executar o programa existem duas opções:
 
