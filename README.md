@@ -17,10 +17,10 @@ D F# A
 
 Para compilar digite "make" no terminal e para executar o programa existem duas opções:
 
-1. Digite "./tp3" com dois parâmetros. O primeiro é o arquivo de entrada, e o segundo o número do algoritmo que deseja executar. 
+1. Digite "./tp3" com dois parâmetros. O primeiro é o arquivo de entrada, e o segundo o número do algoritmo que deseja executar.  
 Exemplo: "./tp3 ./Entrada_saida/Arquivos/entrada.txt 1"
 
-2. Digite "make run" com o número do algoritmo que deseja executar depois de "run".
+2. Digite "make run" com o número do algoritmo que deseja executar depois de "run".  
 Exemplo: "make run1"
 
 O resultado estará presente em ./Entrada_saida/Arquivos/saida.txt. E caso queira excluir os arquivos objetos(.o) e o executável basta digitar "make clean" no terminal.
