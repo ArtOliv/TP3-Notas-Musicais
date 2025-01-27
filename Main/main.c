@@ -31,13 +31,26 @@ int main(int argc, char *argv[]){
         int posicao = -1;
         switch(algoritmo){
             case 1:
+                printf("Resolvendo com força Bruta!\n");
                 posicao = forcaBruta(musica, trecho, m, t);
+                break;
+            case 2:
+                printf("Resolvendo com KMP!\n");
+                posicao = KMP(musica, trecho, m, t);
+                break;
+            case 3:
+                printf("Resolvendo com BMH!\n");
+                posicao = boyerMoore(musica, trecho, m, t);
+                break;
+            case 4:
+                printf("Resolvendo com Shift-And!\n");
+                posicao = shiftAnd(musica, trecho, m, t);
                 break;
         }
 
         printf("Posição: %d\n", posicao);
 
-        escreveResultado(saida, posicao);
+        escreveCasamento(saida, posicao);
 
         destroiLista(musica, m);
         destroiLista(trecho, t);

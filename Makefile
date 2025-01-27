@@ -33,13 +33,13 @@ clean:
 	rm -f $(EXEC)
 
 run1: $(EXEC)
-	./$(EXEC) $(CAMINHO)tp3.in 1
+	./$(EXEC) $(CAMINHO)entrada.txt 1
 
 run2: $(EXEC)
-	./$(EXEC) $(CAMINHO)tp3.in 2
+	./$(EXEC) $(CAMINHO)entrada.txt 2
 
 run3: $(EXEC)
-	./$(EXEC) $(CAMINHO)tp3.in 3
+	./$(EXEC) $(CAMINHO)entrada.txt 3
 
 run4: $(EXEC)
-	./$(EXEC) $(CAMINHO)tp3.in 4
+	./$(EXEC) $(CAMINHO)entrada.txt 4
