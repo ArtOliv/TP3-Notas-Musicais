@@ -2,6 +2,11 @@
 #include "../Interface/in_out.h"
 
 int KMP(char **musica, char **trecho, int m, int t){
+    if(t > m){
+        printf("O trecho para pesquisa é maior que a música!\n");
+        return -1;
+    }
+
     int aux_vetor[t]; // Array auxiliar do tamanho do padrão
     int idx = 0, i = 0, j = 1;
 
@@ -30,7 +35,7 @@ int KMP(char **musica, char **trecho, int m, int t){
     j = 0;
     int deslocamentoAtual;
     while(i < m){
-        int deslocamento = calculaDeslocamentoDeTons(trecho[j], musica[i]);
+        int deslocamento = calculaDeslocamentoDeTons(trecho[j],  musica[i]);
         if(j == 0){ // Caso seja o início do casamento o deslocamento de tons é definido 
             deslocamentoAtual = deslocamento;
         }

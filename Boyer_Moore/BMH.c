@@ -2,6 +2,11 @@
 #include "../Interface/in_out.h"
 
 int boyerMoore(char **musica, char **trecho, int m, int t){
+    if(t > m){
+        printf("O trecho para pesquisa é maior que a música!\n");
+        return -1;
+    }
+
     int d[12]; // Array do tamanho da quantidade de notas musicais(dicionário)
     int i, j, k;
 
@@ -11,10 +16,10 @@ int boyerMoore(char **musica, char **trecho, int m, int t){
     }
 
     // Preenche o array considerando as notas do padrão e o índice delas
-    for(j = 1; j < t; j++){
+    for(j = 0; j <  t - 1; j++){
         int index = indexNota(trecho[j]);
         if(index != -1){
-            d[index] = t - j; // O valor é o tamanho do padrão menos o ídice da nota
+            d[index] = t - j - 1; // O valor é o tamanho do padrão menos o ídice da nota menos 1
         }
     }
 
@@ -27,8 +32,8 @@ int boyerMoore(char **musica, char **trecho, int m, int t){
 
         int deslocamento = calculaDeslocamentoDeTons(musica[k], trecho[j]); // Define o deslocamento de tons das notas a serem comparadas
 
-        while(k > 0 && j > 0){
-            int deslocamentoAtual = calculaDeslocamentoDeTons(musica[k - 1], trecho[j - 1]); // Deslocamento da próxima nota é calculado
+        while(j >= 0){
+            int deslocamentoAtual = calculaDeslocamentoDeTons(musica[k],  trecho[j]); // Deslocamento da próxima nota é calculado
             if(deslocamentoAtual != deslocamento){ // Se deslocamentos diferentes não há casamento
                 break;
             }
@@ -37,8 +42,8 @@ int boyerMoore(char **musica, char **trecho, int m, int t){
         }
 
         // Se chegou ao final do padrão retorna o índice do início do casamento 
-        if(j == 0){
-            return k;
+        if(j < 0){
+            return k + 1;
         }
 
         // Atualiza o índice i com base no deslocamento
