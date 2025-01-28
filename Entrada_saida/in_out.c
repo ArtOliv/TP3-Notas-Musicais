@@ -84,10 +84,8 @@ int calculaDeslocamentoDeTons(char *tom1, char *tom2){
 // Escreve no arquivo de saída o resultado dos algoritmos
 void escreveCasamento(FILE *saida, int posicao){
     if(posicao != -1){
-        printf("Escrevendo no arquivo: S %d\n", posicao);
         fprintf(saida, "S %d\n", posicao);
     } else {
-        printf("Escrevendo no arquivo: N\n");
         fprintf(saida, "N\n");
     }
 }
