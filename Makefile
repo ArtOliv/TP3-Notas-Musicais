@@ -1,8 +1,8 @@
 PC = gcc
 CFLAGS = -Wall
 EXEC = tp3
-OBJ = main.o in_out.o forca_bruta.o KMP.o BMH.o shift_and.o
-INTERFACE = Interface/forca_bruta.h Interface/KMP.h Interface/BMH.h Interface/shift_and.h Interface/in_out.h
+OBJ = main.o in_out.o tons.o forca_bruta.o KMP.o BMH.o shift_and.o
+INTERFACE = Interface/forca_bruta.h Interface/KMP.h Interface/BMH.h Interface/shift_and.h Interface/in_out.h Interface/tons.h
 CAMINHO = ./Entrada_saida/Arquivos/
 
 all: $(EXEC)
@@ -15,6 +15,9 @@ main.o: Main/main.c $(INTERFACE)
 
 in_out.o: Entrada_saida/in_out.c $(INTERFACE)
 	$(PC) $(CFLAGS) -c Entrada_saida/in_out.c
+
+tons.o: Entrada_saida/tons.c $(INTERFACE)
+	$(PC) $(CFLAGS) -c Entrada_saida/tons.c
 
 forca_bruta.o: Forca_bruta/forca_bruta.c $(INTERFACE)
 	$(PC) $(CFLAGS) -c Forca_bruta/forca_bruta.c

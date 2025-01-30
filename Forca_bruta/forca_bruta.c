@@ -1,5 +1,5 @@
 #include "../Interface/forca_bruta.h"
-#include "../Interface/in_out.h"
+#include "../Interface/tons.h"
 
 int forcaBruta(char **musica, char **trecho, int m, int t){
     if(t > m){

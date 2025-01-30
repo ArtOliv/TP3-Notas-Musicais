@@ -1,5 +1,5 @@
 #include "../Interface/shift_and.h"
-#include "../Interface/in_out.h"
+#include "../Interface/tons.h"
 
 int shiftAnd(char **musica, char **trecho, int m, int t){
     if(t > m){

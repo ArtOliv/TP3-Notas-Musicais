@@ -1,5 +1,5 @@
 #include "../Interface/KMP.h"
-#include "../Interface/in_out.h"
+#include "../Interface/tons.h"
 
 int KMP(char **musica, char **trecho, int m, int t){
     if(t > m){

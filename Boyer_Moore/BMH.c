@@ -1,5 +1,5 @@
 #include "../Interface/BMH.h"
-#include "../Interface/in_out.h"
+#include "../Interface/tons.h"
 
 int boyerMoore(char **musica, char **trecho, int m, int t){
     if(t > m){
