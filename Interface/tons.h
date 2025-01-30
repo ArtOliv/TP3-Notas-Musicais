@@ -7,8 +7,6 @@
 
 int indexNota(char *nota);
 
-void subirMeioTom(char** trecho, int t);
-
 int calculaDeslocamentoDeTons(char *tom1, char *tom2);
 
 #endif
