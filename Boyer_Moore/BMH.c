@@ -7,52 +7,69 @@ int boyerMoore(char **musica, char **trecho, int m, int t){
         return -1;
     }
 
-    int d[12]; // Array do tamanho da quantidade de notas musicais(dicionário)
-    int i, j, k;
+    char *(*notas)[2] = listaNotas();
+    int d[12];
 
-    // Inicializa o array com o valor do tamanho do padrão
-    for(j = 0; j < 12; j++){
-        d[j] = t;
-    }
-
-    // Preenche o array considerando as notas do padrão e o índice delas
-    for(j = 0; j <  t - 1; j++){
-        int index = indexNota(trecho[j]);
-        if(index != -1){
-            d[index] = t - j - 1; // O valor é o tamanho do padrão menos o ídice da nota menos 1
+    for(int deslocamento = 0; deslocamento < 12; deslocamento++){
+        // Inicializa o array com o valor do tamanho do padrão
+        for(int j = 0; j < 12; j++){
+            d[j] = t;
         }
-    }
 
-    // Início da pesquisa de casamento
-    i = t;
-    while(i <= m){
-        // São atribuidos os índices da última nota do padrão a k(índice texto) e j(índice padrão)
-        k = i - 1;
-        j = t - 1;
-
-        int deslocamento = calculaDeslocamentoDeTons(musica[k], trecho[j]); // Define o deslocamento de tons das notas a serem comparadas
-
-        while(j >= 0){
-            int deslocamentoAtual = calculaDeslocamentoDeTons(musica[k],  trecho[j]); // Deslocamento da próxima nota é calculado
-            if(deslocamentoAtual != deslocamento){ // Se deslocamentos diferentes não há casamento
-                break;
+        // Preenche o array considerando as notas do padrão e o índice delas
+        for(int j = 0; j <  t - 1; j++){
+            int index = indexNota(trecho[j]);
+            if(index != -1){
+                d[index] = t - j - 1;
             }
-            k--;
-            j--; // índices decrementados pois a pesquisa é feita da direita para esquerda
         }
 
-        // Se chegou ao final do padrão retorna o índice do início do casamento 
-        if(j < 0){
-            return k + 1;
+        // Início da pesquisa de casamento
+        int i = 0;
+        while(i <= m - t){
+            int j = t - 1; // é atribuído o último índice do padrão
+            int casamento = 1;
+
+            // Compara todas as notas do padrão
+            while(j >= 0 && casamento){
+                int index = indexNota(trecho[j]);
+                if(index == -1){
+                    casamento = 0;
+                    break;
+                }
+
+                // Salva nessas variáveis a nota e sua equivalente
+                char *nota1 = notas[index][0];
+                char *nota2 = notas[index][1];
+
+                // Compara a nota e sua equivalente
+                int casamentoAtual = (strcmp(musica[i + j], nota1) == 0);
+                if(!casamentoAtual  && nota2[0] != '\0'){
+                    casamentoAtual = (strcmp(musica[i + j], nota2) == 0);
+                }
+
+                if(!casamentoAtual){ // Se as notas não são iguais sairá do loop
+                    casamento = 0;
+                }
+
+                j--;
+            }
+            
+            // Se chegou ao final do padrão retorna o índice do início do casamento
+            if(casamento){
+                return i;
+            }
+
+            // Calcula o deslocamento para comparação no texto
+            int index = indexNota(musica[i + t - 1]); // Primeira nota do texto da direita pra esquerda
+            if(index != -1){
+                i = i + d[index];
+            } else {
+                i = i + t;
+            }
         }
 
-        // Atualiza o índice i com base no deslocamento
-        int index = indexNota(musica[i - 1]);
-        if(index != -1){
-            i = i + d[index];
-        } else {
-            i++;
-        }
+        subirMeioTom(trecho, t);
     }
     return -1;
 }
