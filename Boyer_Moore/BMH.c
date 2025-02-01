@@ -8,7 +8,7 @@ int boyerMoore(char **musica, char **trecho, int m, int t){
     }
 
     char *(*notas)[2] = listaNotas();
-    int d[12];
+    int d[12]; // Array de deslocamento do tamanho do dicionário, 12 notas
 
     for(int deslocamento = 0; deslocamento < 12; deslocamento++){
         // Inicializa o array com o valor do tamanho do padrão

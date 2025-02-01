@@ -8,7 +8,7 @@ int KMP(char **musica, char **trecho, int m, int t){
     }
 
     int aux_vetor[t]; // Array auxiliar do tamanho do padrão
-    int idx = 0, i = 0, j = 1;
+    int index = 0, i = 0, j = 1;
 
     // Inicializa todas as posições do array com 0
     for(int i = 0; i < t; i++){
@@ -17,15 +17,15 @@ int KMP(char **musica, char **trecho, int m, int t){
 
     // Preenche o array auxiliar considerando os deslocamentos de tons
     while(j < t){
-        int deslocamento = calculaDeslocamentoDeTons(trecho[idx], trecho[j]);
-        if(deslocamento == calculaDeslocamentoDeTons(trecho[0], trecho[j - idx])){
-            idx++;
-            aux_vetor[j] = idx; // Se o deslocamento é igual o array é preenchido
+        int deslocamento = calculaDeslocamentoDeTons(trecho[index], trecho[j]);
+        if(deslocamento == calculaDeslocamentoDeTons(trecho[0], trecho[j - index])){
+            index++;
+            aux_vetor[j] = index; // Se o deslocamento é igual o array é preenchido
             j++;
         } else {
-            if(idx > 0){
-                idx = aux_vetor[idx - 1]; // Se o deslocamento não é igual idx é atualizado
-            } else if(idx == 0){
+            if(index > 0){
+                index = aux_vetor[index - 1]; // Se o deslocamento não é igual index é atualizado
+            } else if(index == 0){
                 j++;
             }
         }
